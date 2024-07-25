@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "13515ae0-f023-4002-bb22-5e7b5f9a17bc",
+		"name": "linktic",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "25439587"
+	},
+	"item": [
+		{
+			"name": "finduser",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Obtén el cuerpo de la solicitud\r",
+							"var requestBody = pm.request.body.raw;\r",
+							"\r",
+							"// Convierte el cuerpo a Base64\r",
+							"var base64Data = btoa(requestBody);\r",
+							"\r",
+							"// Asigna el valor Base64 al cuerpo de la solicitud\r",
+							"pm.request.body.raw = base64Data;"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = (pm.response.stream).toString()\r",
+							"console.log(atob(jsonData))"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pkid_user\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://ec2-54-224-113-82.compute-1.amazonaws.com:8081/user/crudUser"
+			},
+			"response": []
+		},
+		{
+			"name": "find-product",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var requestBody = pm.request.body.raw;\r",
+							"\r",
+							"// Convierte el cuerpo a Base64\r",
+							"var base64Data = btoa(requestBody);\r",
+							"\r",
+							"// Asigna el valor Base64 al cuerpo de la solicitud\r",
+							"pm.request.body.raw = base64Data;"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = (pm.response.stream).toString()\r",
+							"console.log(atob(jsonData))"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://ec2-54-224-113-82.compute-1.amazonaws.com:8081/product/findAll"
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,17 @@
+
+build:
+  stage: build
+  script:
+    - ./gradlew clean build
+
+test:
+  stage: test
+  script:
+    - ./gradlew test
+
+
+deploy:
+  stage: deploy
+  script:
+  only:
+    - master

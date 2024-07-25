@@ -1,0 +1,44 @@
+spring:
+  datasource:
+    url: ENC(${URL_DB})
+    username: ENC(${USERNAME_DB})
+    password: ENC(${PDB})
+    driver-class-name: ${DRIVE}
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    open-in-view: false
+
+  application:
+    name: ms-user-module
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${LB_AUTH_ISSUER:http//127.0.0.1:9000}
+      client:
+        registration:
+          msvc-usuarios-client:
+            provider: spring
+            client-id: usuarios-client
+            client-secret: 12345
+            authorization-grant-type: authorization_code
+            redirect-uri: ${REDIRECT_URI:http://127.0.0.1:8081/authorized"}
+            scope: read
+            client-name: msvc-usuarios-client
+        provider:
+          spring:
+            issuer-uri: ${ISSUER_URI:http//127.0.0.1:9000}
+server:
+  port: ${PORT}
+jasypt:
+  encryptor:
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+    password: ${JASYPT_ENCRYPTOR}
