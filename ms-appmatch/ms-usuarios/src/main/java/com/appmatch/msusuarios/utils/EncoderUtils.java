@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
@@ -48,12 +49,15 @@ public class EncoderUtils {
             throw new ValidationException(e.getMessage());
         }
     }
+    private static final ObjectMapper objectMapper = new ObjectMapper();
+
     public static String encodeResponse(Object response) {
-        ObjectMapper objectMapper = new ObjectMapper();
         try {
-            return base64Encode(objectMapper.writeValueAsString(response));
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
+            String json = objectMapper.writeValueAsString(response);
+            return Base64.encodeBase64String(json.getBytes());
+        } catch (IOException e) {
+
+            throw new RuntimeException("Error encoding response: " + e.getMessage(), e);
         }
     }
 }

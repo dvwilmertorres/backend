@@ -1,12 +1,38 @@
 package com.appmatch.msusuarios.model;
 
+import java.util.UUID;
+
 public class UserDto {
-    public Long getPkid_user() {
-        return pkid_user;
+    private UUID id;
+    private String country;
+    private String name;
+    private String user;
+    private String password;
+    private String rol;
+    private String gender;
+
+    public UUID getId() {
+        return id;
     }
 
-    public void setPkid_user(Long pkid_user) {
-        this.pkid_user = pkid_user;
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getUser() {
@@ -25,7 +51,19 @@ public class UserDto {
         this.password = password;
     }
 
-    private Long pkid_user;
-    private String user;
-    private String password;
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 }

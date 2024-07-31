@@ -1,9 +1,0 @@
-version: '3.8'
-
-services:
-  ms-products:
-    image: ms-products:lts
-    ports:
-      - "8081:8081"
-    env_file:
-      - variables.env
