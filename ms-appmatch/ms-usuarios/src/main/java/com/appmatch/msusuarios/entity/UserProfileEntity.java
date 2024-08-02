@@ -3,9 +3,6 @@ package com.appmatch.msusuarios.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -184,5 +181,5 @@ public class UserProfileEntity {
     public void setImage(String image) {
         this.image = image;
     }
-    
+
 }

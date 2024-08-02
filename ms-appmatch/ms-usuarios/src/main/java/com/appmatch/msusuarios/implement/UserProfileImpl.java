@@ -75,6 +75,7 @@ public class UserProfileImpl implements UserProfileServices {
             userInfoEntity.setAddress(userInfoDto.getAddress());
             userInfoEntity.setIdentification_number(userInfoDto.getIdentification_number());
             userInfoEntity.setBirthdate(userInfoDto.getBirthdate());
+            userInfoEntity.setImage(userInfoDto.getImage());
             UserProfileEntity savedEntity = _userProfileRepository.save(userInfoEntity);
 
             return ResponseEntity.ok(EncoderUtils.encodeResponse(savedEntity));

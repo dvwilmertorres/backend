@@ -1,10 +1,5 @@
 package com.appmatch.msusuarios.model;
 
-import com.appmatch.msusuarios.entity.UserProfileEntity;
-
-import java.time.LocalDate;
-import java.util.Optional;
-
 public class UserProfileDto {
 
 
@@ -152,5 +147,4 @@ public class UserProfileDto {
     public void setImage(String image) {
         this.image = image;
     }
-
 }
