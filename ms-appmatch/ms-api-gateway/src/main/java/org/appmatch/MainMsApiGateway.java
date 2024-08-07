@@ -8,4 +8,5 @@ public class MainMsApiGateway {
     public static void main(String[] args) {
         SpringApplication.run(MainMsApiGateway.class, args);
     }
+    
 }
