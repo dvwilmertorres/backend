@@ -1,4 +1,60 @@
+/*
+create schema "appmatch_apigateway";
+alter schema "appmatch_apigateway" owner to admin;
+ */
 
+create table appmatch_apigateway.mst_route_manager
+(
+    pkid_mst_route_manager uuid DEFAULT gen_random_uuid() NOT NULL primary key,
+    creation_date          varchar(50) default NOW() NOT NULL,
+    expiration_date        varchar(50),
+    service_name           varchar(50),
+    "group"                varchar(50),
+    method                 varchar(20),
+    protocol               varchar(9),
+    uri                    varchar(40),
+    port                   varchar(5),
+    predicates             varchar(40),
+    filters                varchar(40),
+    endpoint               varchar(50)
+);
+
+alter table appmatch_apigateway.mst_route_manager
+    owner to admin;
+
+insert into appmatch_apigateway.mst_route_manager(service_name, "group", method,protocol, uri, port, predicates, filters, endpoint)
+values ('Dictionary','common','POST','http://','127.0.0.1','8082','Path=/searchDictionaries',
+        'RewritePath=/searchDictionaries,','/userProfile/searchDictionaries');
+
+create table appmatch_apigateway.mst_functionality
+(
+    pkid_mst_functionality uuid DEFAULT gen_random_uuid() NOT NULL primary key,
+    creation_date          varchar(50) default NOW() NOT NULL,
+    expiration_date        varchar(50),
+    event_name             varchar(50),
+    description            varchar(120)
+);
+
+alter table appmatch_apigateway.mst_functionality
+    owner to admin;
+
+
+create table appmatch_apigateway.mst_orchestration
+(
+    pkid_mst_orchestration    uuid DEFAULT gen_random_uuid() NOT NULL primary key,
+    creation_date             varchar(50) default NOW() NOT NULL,
+    expiration_date           varchar(50),
+    fk_pkid_mst_route_manager uuid not null
+        constraint fk_pkid_mst_route_manager
+            references appmatch_apigateway.mst_route_manager,
+    fk_pkid_mst_funtionality  uuid not null
+        constraint fk_pkid_mst_funtionality
+            references appmatch_apigateway.mst_functionality,
+    execution_order           integer
+);
+
+alter table appmatch_apigateway.mst_orchestration
+    owner to admin;
 /*=======================================================================================================*/
 CREATE TABLE IF NOT EXISTS appmatch_schema."dictionary"
 (
@@ -373,6 +429,17 @@ SELECT * FROM appmatch_schema.vw_knowledge_showcase;
     drop table appmatch_schema."dictionary";
     drop table appmatch_schema."country";
     drop table appmatch_schema.knowledge;
+
+    drop table appmatch_apigateway.mst_orchestration
+    drop table appmatch_apigateway.mst_functionality
+    drop table appmatch_apigateway.mst_route_manager
+
+
+
+
+    select * from appmatch_apigateway.mst_functionality;
+    select * from appmatch_apigateway.mst_orchestration;
+    select * from appmatch_apigateway.mst_route_manager;
 */
 
 /*
@@ -380,30 +447,6 @@ select * from appmatch_schema.professor_profile;
 select * from appmatch_schema."user_profile";
 select * from appmatch_schema."dictionary";
 select * from appmatch_schema."country";
-delete from appmatch_schema."user_profile" where identification_number = '456' ;
-INSERT INTO appmatch_schema."user_profile"
-        (name,middle_name,fathers_last_name,mothers_last_name,identification_number, birthdate, phone, email, address,image)
-    VALUES
-        (
-            'Wilmer','Giovanny','Torres','Achury',
-             '890722628',
-            '19890722',
-            '3016738627',
-            'dv.wilmer.torres@gmail.com',
-            'Calle 1 # 2-36 sur',
-            'https://media.istockphoto.com/id/1201144328/es/foto/hombre-negro-sonriente-en-traje-posando-en-el-fondo-del-estudio.jpg?s=612x612&w=0&k=20&c=rkrFGjza4PQzIAbd7Q0LnAo1tGY31tm1fjevBSaIn00='
-        );
-
-select pkid_user,
-        "user".creation_date,
-        "user".expiration_date,
-        username,
-        "user".password,
-        "user"."fk_pkid_user_profile",
-        number_attempts
- from appmatch_schema."user"
-
 SELECT pkid_knowledge, group_knowledge,name_knowledge FROM appmatch_schema.knowledge
  */
-
 

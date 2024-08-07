@@ -1,0 +1,56 @@
+server:
+  port: ${PORT}
+
+spring:
+  application:
+    name: api-gateway
+  main:
+    web-application-type: reactive
+  cloud:
+    gateway:
+      routes:
+        - id: service1
+          uri: http://127.0.0.1:8081
+          predicates:
+            - Path=/service1/**
+          filters:
+            - RewritePath=/service1/(?<path>.*), /$\{path}
+
+        - id: service2
+          uri: http://127.0.0.1:8082
+          predicates:
+            - Path=/searchDictionaries
+          filters:
+            - RewritePath=/searchDictionaries, /userProfile/searchDictionaries
+
+        - id: service3
+          uri: http://127.0.0.1:8083
+          predicates:
+            - Path=/tutors/findAll
+          filters:
+            - RewritePath=/tutors/findAll, /findAll
+  datasource:
+    url: ENC(${URL_DB})
+    username: ENC(${USERNAME_DB})
+    password: ENC(${PDB})
+    driver-class-name: ${DRIVE}
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    open-in-view: false
+
+jasypt:
+  encryptor:
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+    password: ${JASYPT_ENCRYPTOR}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

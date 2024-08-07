@@ -5,7 +5,7 @@
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/appweb/usermodule" />
-        <option name="gradleJvm" value="#JAVA_HOME" />
+        <option name="gradleJvm" value="corretto-17" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/appweb/usermodule" />
@@ -13,18 +13,16 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/ms-api-gateway" />
-        <option name="gradleHome" value="$USER_HOME$/AppData/Local/gradle-8.8-bin/gradle-8.8" />
-        <option name="gradleJvm" value="#JAVA_HOME" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/ms-apigateway" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/ms-api-gateway" />
+            <option value="$PROJECT_DIR$/ms-apigateway" />
           </set>
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/ms-product" />
-        <option name="gradleJvm" value="#JAVA_HOME" />
+        <option name="gradleJvm" value="corretto-17" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/ms-product" />
@@ -33,7 +31,7 @@
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/ms-usuarios" />
-        <option name="gradleJvm" value="#JAVA_HOME" />
+        <option name="gradleJvm" value="corretto-17" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/ms-usuarios" />
@@ -41,5 +39,6 @@
         </option>
       </GradleProjectSettings>
     </option>
+    <option name="parallelModelFetch" value="true" />
   </component>
 </project>
