@@ -5,8 +5,10 @@
     <file type="web" url="file://$PROJECT_DIR$/appweb/ms-auth" />
     <file type="web" url="file://$PROJECT_DIR$/appweb/usermodule" />
     <file type="web" url="file://$PROJECT_DIR$/ms-api-gateway" />
+    <file type="web" url="file://$PROJECT_DIR$/ms-apigateway" />
     <file type="web" url="file://$PROJECT_DIR$/ms-product" />
     <file type="web" url="file://$PROJECT_DIR$/ms-user" />
+    <file type="web" url="file://$PROJECT_DIR$/ms-usuarios" />
   </component>
   <component name="ParserProjectConfiguration">
     <class-path />
